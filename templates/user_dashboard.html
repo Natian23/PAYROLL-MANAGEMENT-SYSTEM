@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link href="{% static 'css/user-dashboard.css'  %}" rel="stylesheet">
+
+<div class="user-dashboard">
+    <div class="dashboard-header">
+        <h1>Welcome, {{ employee.username }}!</h1>
+    </div>
+
+    <div class="dashboard-content">
+        <div class="profile-section">
+            <h2 class="section-title">Your Profile</h2>
+            <div class="profile-details">
+                <div><strong>Employee ID:</strong> {{ employee.employee_id }}</div>
+                <div><strong>Department:</strong> {{ employee.department.name }}</div>
+                <div><strong>Role:</strong> {{ employee.role.title }}</div>
+                <div><strong>Email:</strong> {{ employee.email }}</div>
+            </div>
+        </div>
+
+
+        <a href="{% url 'logout' %}">
+            <button class="logout-button">Logout</button>
+        </a>
+        
+
+    </div>
+</div>
+
+{% endblock %}

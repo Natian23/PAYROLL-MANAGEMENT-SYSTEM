@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Payroll Management System</title>
+    <link href="{% static 'css/authentication.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Register</h2>
+        
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+                    {{ form.employee_id.label_tag }}
+                    {{ form.employee_id }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    {{ form.phone_number.label_tag }}
+                    {{ form.phone_number }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.date_of_birth.label_tag }}
+                    {{ form.date_of_birth }}
+                </div>
+                <div class="form-group">
+                    {{ form.gender.label_tag }}
+                    {{ form.gender }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group full-width">
+                    {{ form.address.label_tag }}
+                    {{ form.address }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                </div>
+                <div class="form-group">
+                    {{ form.confirm_password.label_tag }}
+                    {{ form.confirm_password }}
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+
+            <div class="login-link">
+                <p>Already have an account? <a href="/login">Login here</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
